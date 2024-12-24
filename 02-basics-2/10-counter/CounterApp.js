@@ -12,6 +12,7 @@ export default defineComponent({
         plus: count.value > 4 ? true : false,
       }
     })
+
     return {
       count,
       counter,
@@ -35,7 +36,7 @@ export default defineComponent({
         type="button"
         aria-label="Increment"
         :disabled="counter.plus"
-        @click="count++"
+        @click="++count"
       >➕</button>
     </div>
   `,
