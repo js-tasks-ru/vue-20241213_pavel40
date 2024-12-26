@@ -20,6 +20,7 @@ export default defineComponent({
   props: {
     meetup: {
       type: Object,
+      required: true,
     },
   },
 
