@@ -1,9 +1,25 @@
-<script setup lang="ts"></script>
+<script generic="T extends string" lang="ts" setup>
+type TypeOptions = {
+  value: T
+  text: string
+}
+
+defineProps<{
+  options: TypeOptions[]
+}>()
+
+const model = defineModel<T>()
+
+function updateModel(event: T): void {
+  model.value = event
+}
+</script>
 
 <template>
-  <select class="select">
-    <option value="value-1">One</option>
-    <option value="value-2">Two</option>
+  <select class="select" @change="updateModel($event.target.value)">
+    <option v-for="option in options" :selected="model == option.value" :value="option.value">
+      {{ option.text }}
+    </option>
   </select>
 </template>
 

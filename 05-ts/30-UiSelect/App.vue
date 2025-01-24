@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ref } from 'vue'
 import { UiContainer } from '@shgk/vue-course-ui'
 import UiSelect from './UiSelect.vue'
@@ -13,15 +13,12 @@ const options = [
 ]
 
 const selected = ref<SelectValue>('')
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function handleUpdate(newValue: SelectValue) {}
 </script>
 
 <template>
   <UiContainer>
     <p>Выбрано: {{ selected }}</p>
     <!-- Если тип компонента будет некорректным, использование handleUpdate приведёт здесь к ошибке TS -->
-    <UiSelect v-model="selected" :options @update:model-value="handleUpdate" />
+    <UiSelect v-model="selected" :options />
   </UiContainer>
 </template>

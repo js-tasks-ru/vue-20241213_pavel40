@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ref } from 'vue'
 import { UiButton, UiContainer, UiInput, UiStory, UiIcon, UiFlex, UiLink } from '@shgk/vue-course-ui'
 import UiFormGroup from './UiFormGroup.vue'
@@ -9,16 +9,16 @@ const text = ref('')
 <template>
   <UiContainer>
     <UiStory title="Простое использование">
-      <UiFlex gap="larger" column>
-        <UiFormGroup for="password0" label="Пароль" hint="Это поле обязательно для заполнения" :invalid="!text">
+      <UiFlex column gap="larger">
+        <UiFormGroup :invalid="!text" for="password0" hint="Это поле обязательно для заполнения" label="Пароль">
           <UiInput id="password0" v-model="text" />
         </UiFormGroup>
 
         <UiFormGroup
-          for="password1"
-          label="Повторите пароль"
-          hint="Это поле обязательно для заполнения"
           :invalid="!text"
+          for="password1"
+          hint="Это поле обязательно для заполнения"
+          label="Повторите пароль"
         >
           <UiInput id="password1" v-model="text" />
         </UiFormGroup>
@@ -28,22 +28,22 @@ const text = ref('')
     </UiStory>
 
     <UiStory title="С описанием и подсказкой">
-      <UiFlex gap="larger" column>
+      <UiFlex column gap="larger">
         <UiFormGroup
-          for="password2"
-          label="Пароль"
           description="Пароль важен для защиты вашего аккаунта"
+          for="password2"
           hint="По возможности используйте сгенерированный пароль"
+          label="Пароль"
           show-hint
         >
           <UiInput id="password2" v-model="text" />
         </UiFormGroup>
         <UiFormGroup
-          for="password3"
-          label="Пароль"
           description="Пароль важен для защиты вашего аккаунта"
+          for="password3"
           hint="Требуется одна буква, цифра, иероглиф, постоянная планка"
           invalid
+          label="Пароль"
         >
           <UiInput id="password3" v-model="text" />
         </UiFormGroup>
@@ -51,8 +51,8 @@ const text = ref('')
     </UiStory>
 
     <UiStory title="Кастомный контент">
-      <UiFlex gap="larger" column>
-        <UiFormGroup for="password4" show-hint invalid>
+      <UiFlex column gap="larger">
+        <UiFormGroup for="password4" invalid show-hint>
           <template #label>
             <UiFlex gap="small">
               <UiIcon icon="key" />
@@ -61,7 +61,8 @@ const text = ref('')
           </template>
           <template #description>
             Ознакомьтесь с информацией о безопасности пароля в
-            <UiLink href="https://en.wikipedia.org/wiki/Password" target="_blank">wiki</UiLink>.
+            <UiLink href="https://en.wikipedia.org/wiki/Password" target="_blank">wiki</UiLink>
+            .
           </template>
           <UiInput id="password4" v-model="text" />
         </UiFormGroup>
