@@ -1,23 +1,19 @@
-<script setup>
-// import type { MeetupDTO } from '@shgk/vue-course-ui'
+<script lang="ts" setup>
+import type { MeetupDTO } from '@shgk/vue-course-ui'
 import { UiAlert, UiContainer } from '@shgk/vue-course-ui'
 import MeetupAgenda from './MeetupAgenda.vue'
 import MeetupDescription from './MeetupDescription.vue'
 import MeetupCover from './MeetupCover.vue'
 import MeetupInfo from './MeetupInfo.vue'
 
-defineProps({
-  meetup: {
-    // Настоящий тип - MeetupDTO
-    type: Object,
-    required: true,
-  },
-})
+defineProps<{
+  meetup: MeetupDTO
+}>()
 </script>
 
 <template>
   <div>
-    <MeetupCover :title="meetup.title" :image="meetup.image" />
+    <MeetupCover :image="meetup.image" :title="meetup.title" />
     <UiContainer>
       <div class="meetup">
         <div class="meetup__content">
@@ -28,7 +24,7 @@ defineProps({
           <UiAlert v-else>Программа пока пуста...</UiAlert>
         </div>
         <div class="meetup__aside">
-          <MeetupInfo :organizer="meetup.organizer" :place="meetup.place" :date="meetup.date" />
+          <MeetupInfo :date="meetup.date" :organizer="meetup.organizer" :place="meetup.place" />
           <div class="meetup__aside-buttons"></div>
         </div>
       </div>
